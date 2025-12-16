@@ -12,6 +12,10 @@ services:
       - ${VOL_DATA}
       - /var/run/docker.sock:/var/run/docker.sock
 
+    networks:
+      network-share:
+        ipv4_address: ${IPV4_ADDRESS}
+
 networks:
   network-share:
     external: true
