@@ -24,7 +24,9 @@ for DIR in "${DATA_DIRS[@]}"; do
 done
 
 echo "🔧 Ajustando permissões..."
-chmod -R 775 "$BASE_DIR/data"
+chmod -R 775 $BASE_DIR/data
+chown -R root:root $BASE_DIR/data/portainer
+chmod -R 755 $BASE_DIR/data/portainer
 
 # Configurando rede Docker personalizada
 if ! docker network ls | grep -q "network-share"; then
