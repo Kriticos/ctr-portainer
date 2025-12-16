@@ -1,19 +1,16 @@
 services:
-  des-portainer:
-    image: portainer/portainer-ce:latest
-    container_name: ${CONTAINER_NAME}
-    restart: unless-stopped
+  portainer:
+    image: portainer/portainer-ce:lts
+    container_name: portainer
+    restart: always
+
     ports:
-      - "9443:9443"   # HTTPS
-      - "9000:9000"   # HTTP (opcional)
+      - "8000:8000"
+      - "9443:9443"
+
     volumes:
       - ${VOL_DATA}
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${VOL_TIMEZONE}
-      - ${VOL_LOCALTIME}
-    networks:
-      network-share:
-        ipv4_address: ${IPV4_ADDRESS}
 
 networks:
   network-share:
