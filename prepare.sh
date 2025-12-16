@@ -2,9 +2,11 @@
 
 echo "📁 Iniciando preparação das pastas do ambiente..."
 
-# Detecta o diretório base automaticamente
+# Diretório onde o script está
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
-BASE_DIR="$(realpath "$SCRIPT_DIR/..")"
+
+# Dois níveis acima do script
+BASE_DIR="$(realpath "$SCRIPT_DIR/../..")"
 
 # Pastas de dados (volumes persistentes)
 DATA_DIRS=(
@@ -12,7 +14,7 @@ DATA_DIRS=(
 )
 
 # Criando diretórios
-for DIR in "${DATA_DIRS[@]}" "${DATABASES_DIRS[@]}" "${BACKUP_DIRS[@]}"; do
+for DIR in "${DATA_DIRS[@]}"; do
   if [ ! -d "$DIR" ]; then
     echo "📂 Criando $DIR"
     mkdir -p "$DIR"
@@ -26,7 +28,7 @@ chmod -R 775 "$BASE_DIR/data"
 
 # Configurando rede Docker personalizada
 if ! docker network ls | grep -q "network-share"; then
-  echo "Criando rede network-share..."
+  echo "🌐 Criando rede network-share..."
   docker network create \
     --driver=bridge \
     --subnet=172.18.0.0/16 \
