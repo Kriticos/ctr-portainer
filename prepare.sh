@@ -6,11 +6,11 @@ echo "📁 Iniciando preparação das pastas do ambiente..."
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
 # Dois níveis acima do script
-BASE_DIR="$(realpath "$SCRIPT_DIR/../..")"
+BASE_DIR="$(realpath "$SCRIPT_DIR/./.")"
 
 # Pastas de dados (volumes persistentes)
 DATA_DIRS=(
-  "$BASE_DIR/data/portainer"
+  "$BASE_DIR/data"
 )
 
 # Criando diretórios
@@ -25,8 +25,8 @@ done
 
 echo "🔧 Ajustando permissões..."
 chmod -R 775 $BASE_DIR/data
-chown -R root:root $BASE_DIR/data/portainer
-chmod -R 755 $BASE_DIR/data/portainer
+chown -R root:root $BASE_DIR/data
+chmod -R 755 $BASE_DIR/data
 
 # Configurando rede Docker personalizada
 if ! docker network ls | grep -q "network-share"; then
