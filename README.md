@@ -1,10 +1,10 @@
 # ctr-portainer
 
-Stack Docker responsável por prover uma instância Portainer para o laboratório BlackSkulp, permitindo gerenciar containers e stacks de forma centralizada.
+Stack Docker responsável por prover uma instância Portainer, permitindo gerenciar containers e stacks de forma centralizada.
+
 
 ## Pré-requisitos
-- Docker e Docker Compose instalados
-- Acesso ao repositório `ctr-portainer`
+- [Docker e Docker Compose](https://docs.docker.com/engine/install/)
 - Permissão para executar scripts na pasta do projeto
 
 ## 1. Configurar variáveis de ambiente
@@ -15,24 +15,18 @@ Stack Docker responsável por prover uma instância Portainer para o laboratóri
    ```
 
 2. Edite o `.env` e ajuste:
-   - `BASE_DIR=/bskp-pro` (ou o caminho local que contém a pasta `stack`)
-   - O caminho da pasta do container (`CONTAINER_PATH`) para apontar para `stack/ctr-portainer`
-   - Demais variáveis conforme a necessidade do ambiente
+   - Conforme a necessidade do ambiente
 
 ## 2. Preparar estrutura de pastas
-1. Entre na pasta do container:
+1. Dê permissão ao script de preparação:
 
-   ```bash
-   cd stack/ctr-portainer
-   ```
-
-2. Dê permissão ao script de preparação:
+   Acesse a pasta do container e digite
 
    ```bash
    chmod +x prepare.sh
    ```
 
-3. Execute o script para criar a hierarquia de diretórios esperada pelo stack:
+2. Execute o script para criar a hierarquia de diretórios esperada pelo stack:
 
    ```bash
    ./prepare.sh
